@@ -1,0 +1,99 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\CSharpLearning\\Invoice\\Tests\\Tests.csproj": {}
+  },
+  "projects": {
+    "D:\\CSharpLearning\\Invoice\\Invoice\\Invoice.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\CSharpLearning\\Invoice\\Invoice\\Invoice.csproj",
+        "projectName": "Invoice",
+        "projectPath": "D:\\CSharpLearning\\Invoice\\Invoice\\Invoice.csproj"
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "D:\\CSharpLearning\\Invoice\\Tests\\Tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\CSharpLearning\\Invoice\\Tests\\Tests.csproj",
+        "projectName": "Tests",
+        "projectPath": "D:\\CSharpLearning\\Invoice\\Tests\\Tests.csproj",
+        "packagesPath": "C:\\Users\\p\\.nuget\\packages\\",
+        "outputPath": "D:\\CSharpLearning\\Invoice\\Tests\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\p\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "D:\\CSharpLearning\\Invoice\\Invoice\\Invoice.csproj": {
+                "projectPath": "D:\\CSharpLearning\\Invoice\\Invoice\\Invoice.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.8.3, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.12.0, )"
+            },
+            "NUnit.Console": {
+              "target": "Package",
+              "version": "[3.11.1, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[3.17.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
