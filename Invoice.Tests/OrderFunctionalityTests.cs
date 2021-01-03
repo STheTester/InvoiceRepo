@@ -87,5 +87,45 @@ namespace Invoice.Tests
             //Assert
             Assert.AreEqual(o6.OrderProducts("REF-000-001"), 1);
         }
+        [Test]
+        public void OrderDetailsListIndex_IsReturned_WhenDefaultConstructorIsUsed()
+        {
+            //Arrange 
+            OrderFunctionality o7 = new OrderFunctionality();
+            OrderDetails od1 = new OrderDetails();
+            o7.NewOrderDetails(od1);
+            OrderDetails od2 = new OrderDetails("REF-000-000-01", "REF-000-001", "P0001", 1);
+            o7.NewOrderDetails(od2);
+            //Act
+            //Assert
+            Assert.AreEqual(o7.OrderProducts("REF-000-000"), 0);
+        }
+        [Test]
+
+        public void OrderTotal_IsReturned_WhenOrderDetailsAreAdded()
+        {
+            //Arrange 
+            OrderFunctionality o8 = new OrderFunctionality();
+            OrderDetails od1 = new OrderDetails("REF-000-000-01", "REF-000-001", "P0001", 1);
+            o8.NewOrderDetails(od1);
+            Product product1 = new Product("1", "Test1", 0.01m);
+            o8.NewProduct(product1);
+            //Act
+            //Assert
+            Assert.AreEqual(o8.OrderTotal("REF-000-001", "1"), 0.01m);
+        }
+        [Test]
+        public void OrderTotalIsZero_IsReturned_WhenQuanttityIsZero()
+        {
+            //Arrange 
+            OrderFunctionality o8 = new OrderFunctionality();
+            OrderDetails od1 = new OrderDetails("REF-000-000-01", "REF-000-001", "P0001", 0);
+            o8.NewOrderDetails(od1);
+            Product product1 = new Product("1", "Test1", 0.01m);
+            o8.NewProduct(product1);
+            //Act
+            //Assert
+            Assert.AreEqual(o8.OrderTotal("REF-000-001", "1"), 0.00m);
+        }
     }
 }

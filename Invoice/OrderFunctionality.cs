@@ -47,11 +47,12 @@ namespace Invoice
             return orderDetailsIndex;
         }
         //Need to figure out how to get all products added to an order.
-        public decimal OrderTotal(string orderNumber)
+        public decimal OrderTotal(string orderNumber, string productNumber)
         {
             int o = OrderProducts(orderNumber);
+            int p = ProductInformation(productNumber);
             int pQuantity = OrderDetailsList[o].getQuantity();
-            decimal pPrice = OrderDetailsList[o].getQuantity();
+            decimal pPrice = ProductList[p].getProductPrice();
             decimal total = pQuantity * pPrice;
             return total;
         }
