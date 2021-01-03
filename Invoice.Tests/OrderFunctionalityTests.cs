@@ -26,6 +26,7 @@ namespace Invoice.Tests
         [Test]
         public void Index_IsNotReturned_WhenProductNotInList()
         {
+            //Arrange 
             OrderFunctionality o2 = new OrderFunctionality();
             Product product2 = new Product("1", "Test2", 0.01m);
             o2.NewProduct(product2);
@@ -36,8 +37,9 @@ namespace Invoice.Tests
         }
 
         [Test]
-        public void Index_IsReturned_WhenDefaultConstructorIsUsed()
+        public void ProductListIndex_IsReturned_WhenDefaultConstructorIsUsed()
         {
+            //Arrange 
             OrderFunctionality o3 = new OrderFunctionality();
             Product product3 = new Product();
             o3.NewProduct(product3);
@@ -45,6 +47,45 @@ namespace Invoice.Tests
             //Act
             //Assert
             Assert.AreEqual(o3.ProductInformation("P0000"), 0);
+        }
+
+        [Test]
+        public void OrderListIndex_IsReturned_WhenOrderIsAdded()
+        {
+            //Arrange 
+            OrderFunctionality o4 = new OrderFunctionality();
+            Order or1 = new Order();
+            o4.NewOrder(or1);
+            Order or2 = new Order("REF-000-001", "test", "name", "1 High St", "town", "county","12345","01/03/2020");
+            o4.NewOrder(or2);
+            //Act
+            //Assert
+            Assert.AreEqual(o4.OrderInformation("REF-000-001"), 1);
+        }
+        [Test]
+        public void OrderListIndex_IsReturned_WhenDefaultConstructorIsUsed()
+        {
+            //Arrange 
+            OrderFunctionality o5 = new OrderFunctionality();
+            Order or2 = new Order();
+            o5.NewOrder(or2);
+            //Act
+            //Assert
+            Assert.AreEqual(o5.OrderInformation("REF-000-000"),0);
+        }
+
+        [Test]
+        public void OrderDetailsListIndex_IsReturned_WhenOrderDetailsAreAdded()
+        {
+            //Arrange 
+            OrderFunctionality o6 = new OrderFunctionality();
+            OrderDetails od1 = new OrderDetails();
+            o6.NewOrderDetails(od1);
+            OrderDetails od2 = new OrderDetails("REF-000-000-01", "REF-000-001", "P0001", 1);
+            o6.NewOrderDetails(od2);
+            //Act
+            //Assert
+            Assert.AreEqual(o6.OrderProducts("REF-000-001"), 1);
         }
     }
 }

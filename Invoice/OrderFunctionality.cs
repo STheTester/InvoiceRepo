@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,30 +11,49 @@ namespace Invoice
     public class OrderFunctionality
     {
         
-        List<Product> ProductList = new List<Product>();
-        List<Order> OrderList = new List<Order>();
-        List<OrderDetails> OrderDetailsList = new List<OrderDetails>();
+        readonly List<Product> ProductList = new List<Product>();
+        readonly List<Order> OrderList = new List<Order>();
+        readonly List<OrderDetails> OrderDetailsList = new List<OrderDetails>();
 
         public void NewProduct(Product n)
         {
             ProductList.Add(n);
         }
-        public int ProductInformation(string n)
+        public int ProductInformation(string productNumber)
         {
-            int myIndex = ProductList.FindIndex(p => p.getProductNumber() == n);
-            return myIndex;
+            int productIndex = ProductList.FindIndex(p => p.getProductNumber() == productNumber);
+            return productIndex;
         }
-        public void OrderInformation() 
+        public void NewOrder(Order o) 
         { 
+            OrderList.Add(o);
         }
-        public void NewOrder() 
-        { 
+
+        //Although the requirements state that I should pass in both
+        //order and order details in the same call, I have separated out new order into two parts
+        //This is to allow more than one item added to an order be added to an order.
+        public void NewOrderDetails(OrderDetails od)
+        {
+            OrderDetailsList.Add(od);
         }
-        public void OrderProducts() 
-        {          
+        public int OrderInformation(string orderNumber)
+        {
+            int orderIndex = OrderList.FindIndex(or => or.getOrderNumber() == orderNumber);
+            return orderIndex;
         }
-        public void OrderTotal()
-        { 
+        public int OrderProducts(string orderNumber)
+        {
+            int orderDetailsIndex = OrderDetailsList.FindIndex(od => od.getOrderNumber() == orderNumber);
+            return orderDetailsIndex;
+        }
+        //Need to figure out how to get all products added to an order.
+        public decimal OrderTotal(string orderNumber)
+        {
+            int o = OrderProducts(orderNumber);
+            int pQuantity = OrderDetailsList[o].getQuantity();
+            decimal pPrice = OrderDetailsList[o].getQuantity();
+            decimal total = pQuantity * pPrice;
+            return total;
         }
     }
 }
