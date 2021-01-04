@@ -284,25 +284,32 @@ namespace Invoice
         //not finished
         private void btnGetOrderTotal_Click(object sender, EventArgs e)
         {
-            try
+            if (txtODetailsNum.Text == "")
             {
-                string a = txtODetailsNum.Text;
-                int b = order.OrderProducts(a);
-                int quantity = order.OrderQuantity(b);
-
-                string orderDetailsNum = order.OrderDetailsOrderNumber(b);
-                int f = order.ProductInformation(orderDetailsNum);
-                decimal price = order.ProductPrice(f);
-
-                decimal total = quantity * price;
-
-                lblTotal.Text = Convert.ToString(total);
+                MessageBox.Show(_emptyTextBox);
             }
-
-            catch (Exception exception)
+            else
             {
-                Console.WriteLine(exception);
-                throwOrderDetailsNotFound();
+                try
+                {
+                    string a = txtODetailsNum.Text;
+                    int b = order.OrderProducts(a);
+                    int quantity = order.OrderQuantity(b);
+
+                    string orderDetailsNum = order.OrderDetailsOrderNumber(b);
+                    int f = order.ProductInformation(orderDetailsNum);
+                    decimal price = order.ProductPrice(f);
+
+                    decimal total = quantity * price;
+
+                    lblTotal.Text = Convert.ToString(total);
+                }
+
+                catch (Exception exception)
+                {
+                    Console.WriteLine(exception);
+                    throwOrderDetailsNotFound();
+                }
             }
         }
         //Only allow ints in quantity box
