@@ -16,7 +16,7 @@ namespace Invoice
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new InvoiceForm());
+            Application.Run(new frmProductManagement());
         }
     }
 }
